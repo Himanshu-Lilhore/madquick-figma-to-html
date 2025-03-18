@@ -1,0 +1,627 @@
+<html>
+<header>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+        .section-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .section-content.active {
+            max-height: 1000px;
+        }
+
+        .toggle-icon-plus {
+            display: block;
+        }
+
+        .toggle-icon-minus {
+            display: none;
+        }
+
+        .toggle-button.active .toggle-icon-plus {
+            display: none;
+        }
+
+        .toggle-button.active .toggle-icon-minus {
+            display: block;
+        }
+
+        .font-fam-1 {
+            font-family: 'Degular', sans-serif;
+        }
+
+        .font-fam-2 {
+            font-family: 'Erbaum', sans-serif;
+        }
+
+        .font-fam-3 {
+            font-family: 'Degular variable', sans-serif;
+        }
+    </style>
+</header>
+
+<body class="">
+
+
+    <!-- section - 1  -->
+    <section class="px-4 sm:px-20 pb-10 sm:pb-20">
+        <!-- back button  -->
+        <button
+            class="font-fam-1 my-8 flex gap-2 justify-center items-center self-start text-base font-bold text-center text-black whitespace-nowrap">
+            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/5cc431ae0d9f41b7a29894a1d1fe3a0166421f03e20b16b7399a9299fb832c42?placeholderIfAbsent=true&apiKey=dae2151c29344c8b913745d4df937d8c"
+                alt="Back arrow" class="object-contain shrink-0 self-stretch my-auto w-6 aspect-square" />
+            <span class="self-stretch my-auto">Grįžti</span>
+        </button>
+
+        <div class="flex flex-col sm:flex-row gap-12 items-center w-full max-md:max-w-full">
+            <!-- Product Images -->
+            <div class="my-auto min-w-[343px] sm:min-w-[560px] max-md:max-w-full">
+                <div
+                    class="overflow-hidden max-w-full text-xs font-bold text-white uppercase bg-white rounded-2xl border border-solid border-[#EEE] min-w-[343px] sm:min-w-[560px]">
+                    <div
+                        class="flex overflow-hidden relative flex-col items-start px-5 pt-4 w-full min-h-[560px] pb-[510px] max-md:pb-24 max-md:max-w-full">
+                        <img id="mainImage" src="" alt="Selected Image"
+                            class="object-cover absolute inset-0 size-full" />
+                        <div
+                            class="flex relative gap-2 justify-center items-center px-3 py-2 mb-0 bg-blue-600 rounded-2xl max-md:mb-2.5">
+                            <span class="self-stretch my-auto">Populiariausia prekė</span>
+                            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/6181e7ae4354add9872ea79122957107dff5abe9024d542bcee51c57fd625145"
+                                alt="Popular badge icon"
+                                class="object-contain shrink-0 self-stretch my-auto w-4 aspect-square" />
+                        </div>
+                    </div>
+                </div>
+                <div class="flex flex-wrap gap-4 justify-center items-center mt-6 w-full max-md:max-w-full">
+                    <button id="prevBtn"
+                        class="hidden sm:block flex grow shrink gap-2 justify-center items-center self-stretch px-3 my-auto h-12 bg-black rounded-2xl w-[38px]">
+                        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/26361eec8e578e9d020f0c37e0cdd97c6c141eada681ae562ab3519eac89c2b0"
+                            alt="Previous image" class="object-contain self-stretch my-auto w-6 aspect-square" />
+                    </button>
+                    <div id="thumbnails" class="flex gap-4"></div>
+                    <button id="nextBtn"
+                        class="hidden sm:block flex grow shrink gap-2 justify-center items-center self-stretch px-3 my-auto h-12 bg-black rounded-2xl w-[38px]">
+                        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/d16ce56173e655b7260abf8e914264174deb765a4eb94a0c6f4edf1790aaf122"
+                            alt="Next image" class="object-contain self-stretch my-auto w-6 aspect-square" />
+                    </button>
+                </div>
+            </div>
+
+            <!-- Product Details -->
+            <div class="flex flex-col gap-6 text-lg text-black  max-md:max-w-full">
+                <div
+                    class="font-fam-1 flex flex-wrap gap-6 items-center justify-around sm:justify-start w-full text-sm font-bold leading-loose text-center rounded-lg max-md:max-w-full">
+                    <div class="flex flex-col-reverse sm:flex-row gap-2 items-center self-stretch my-auto">
+                        <span class="self-stretch my-auto">10 metų garantija</span>
+                        <div class="w-full sm:w-fit flex items-center justify-center">
+                            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/113a20252b5d45b9d3b33f82f534e02c15e6cef67238f11b3c8b90370257b270?placeholderIfAbsent=true&apiKey=dae2151c29344c8b913745d4df937d8c"
+                                alt="Warranty icon"
+                                class="object-contain shrink-0 self-stretch my-auto w-4 aspect-square" />
+                        </div>
+                    </div>
+                    <div class="flex flex-col-reverse sm:flex-row gap-2 items-center self-stretch my-auto">
+                        <span class="self-stretch my-auto">Aukšta kokybė</span>
+                        <div class="w-full sm:w-fit flex items-center justify-center">
+                            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/f54b1da5dbeafbd2886d590797c1e8671146277117f076db6f8ab90219fcb685?placeholderIfAbsent=true&apiKey=dae2151c29344c8b913745d4df937d8c"
+                                alt="Quality icon"
+                                class="object-contain shrink-0 self-stretch my-auto w-4 aspect-square" />
+                        </div>
+                    </div>
+                    <div class="flex flex-col-reverse sm:flex-row gap-2 items-center self-stretch my-auto">
+                        <span class="self-stretch my-auto">Dėmesys ekologijai</span>
+                        <div class="w-full sm:w-fit flex items-center justify-center">
+                            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/10f235012cf17197f32c0191613407582ba42daf27245a15944068eba1c0116c?placeholderIfAbsent=true&apiKey=dae2151c29344c8b913745d4df937d8c"
+                                alt="Ecology icon"
+                                class="object-contain shrink-0 self-stretch my-auto w-4 aspect-square" />
+                        </div>
+                    </div>
+                </div>
+
+                <h1 class="font-fam-2 text-3xl leading-none max-md:max-w-full">
+                    Softline mediniai langai
+                </h1>
+
+                <div class="font-fam-3 text-base leading-7 max-md:max-w-full">
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur. Proin habitant in quis in
+                        iaculis blandit hendrerit. Donec diam semper justo nisl mi. Integer
+                        sagittis tellus volutpat cras tellus.
+                    </p>
+                    <br />
+                    <p>
+                        Proin habitant in quis in iaculis blandit hendrerit. Donec diam semper
+                        justo nisl mi. Integer sagittis tellus volutpat cras tellus. Tempus
+                        bibendum sit purus ut in diam laoreet scelerisque enim. Diam dictum
+                        gravida quis vestibulum. Sit sit gravida nisl et pellentesque. Ac
+                        donec integer nullam mattis venenatis. Mauris eu aliquam non et a
+                        nibh.
+                    </p>
+                </div>
+
+                <ul class="font-fam-3 max-w-full leading-none w-[564px]">
+                    <li class="flex flex-wrap gap-4 items-center w-full max-md:max-w-full">
+                        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/7f7018db77a35f783fb5a3fd231ae6392ee40c9fe7ee80873b46ea0775c43310?placeholderIfAbsent=true&apiKey=dae2151c29344c8b913745d4df937d8c"
+                            alt="Checkmark" class="object-contain shrink-0 self-stretch my-auto w-6 aspect-square" />
+                        <span class="self-stretch my-auto">Lorem ipsum dolor sit amet consectetur</span>
+                    </li>
+                    <li class="flex flex-wrap gap-4 items-center mt-2 w-full max-md:max-w-full">
+                        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/7f7018db77a35f783fb5a3fd231ae6392ee40c9fe7ee80873b46ea0775c43310?placeholderIfAbsent=true&apiKey=dae2151c29344c8b913745d4df937d8c"
+                            alt="Checkmark" class="object-contain shrink-0 self-stretch my-auto w-6 aspect-square" />
+                        <span class="self-stretch my-auto">Lorem ipsum dolor sit amet consectetur</span>
+                    </li>
+                    <li class="flex flex-wrap gap-4 items-center mt-2 w-full max-md:max-w-full">
+                        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/7f7018db77a35f783fb5a3fd231ae6392ee40c9fe7ee80873b46ea0775c43310?placeholderIfAbsent=true&apiKey=dae2151c29344c8b913745d4df937d8c"
+                            alt="Checkmark" class="object-contain shrink-0 self-stretch my-auto w-6 aspect-square" />
+                        <span class="self-stretch my-auto">Lorem ipsum dolor sit amet consectetur</span>
+                    </li>
+                    <li class="flex flex-wrap gap-4 items-center mt-2 w-full max-md:max-w-full">
+                        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/7f7018db77a35f783fb5a3fd231ae6392ee40c9fe7ee80873b46ea0775c43310?placeholderIfAbsent=true&apiKey=dae2151c29344c8b913745d4df937d8c"
+                            alt="Checkmark" class="object-contain shrink-0 self-stretch my-auto w-6 aspect-square" />
+                        <span class="self-stretch my-auto">Lorem ipsum dolor sit amet consectetur</span>
+                    </li>
+                </ul>
+
+                <button
+                    class="gap-2.5 self-stretch p-4 max-w-full font-bold leading-none text-center bg-amber-400 rounded-2xl w-[400px]">
+                    Gauti pasiūlymą
+                </button>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- section 2  -->
+    <section class="flex flex-col gap-14 px-4 py-10 sm:p-20 bg-neutral-100">
+        <div class="flex flex-col gap-4">
+            <h2 class="text-3xl leading-10 text-black max-sm:text-3xl max-sm:leading-9">
+                Softline langų ypatybės
+            </h2>
+            <p class="text-lg leading-7 text-black max-sm:text-base max-sm:leading-6">
+                Lorem ipsum dolor sit amet consectetur. Proin habitant in quis in
+                iaculis blandit hendrerit. Donec diam semper justo nisl mi. Integer
+                sagittis tellus volutpat cras tellus. Tempus bibendum sit purus ut in
+                diam laoreet scelerisque enim. Diam dictum gravida quis vestibulum.
+                Sit sit gravida nisl et pellentesque. Ac donec integer nullam mattis
+                venenatis. Mauris eu aliquam non et a nibh.
+            </p>
+        </div>
+
+        <div
+            class="grid gap-14 grid-cols-[repeat(3,1fr)] max-md:gap-8 max-md:grid-cols-[repeat(2,1fr)] max-sm:gap-6 max-sm:grid-cols-[1fr]">
+            <!-- Feature 1 -->
+            <div class="flex gap-6 items-start">
+                <div>
+                    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"
+                        class="feature-icon" style="width: 40px; height: 40px">
+                        <path
+                            d="M32.5 5.00001H25C24.337 5.00001 23.7011 5.2634 23.2322 5.73224C22.7634 6.20108 22.5 6.83697 22.5 7.50001V32.5C22.5 33.163 22.7634 33.7989 23.2322 34.2678C23.7011 34.7366 24.337 35 25 35H32.5C33.163 35 33.7989 34.7366 34.2678 34.2678C34.7366 33.7989 35 33.163 35 32.5V7.50001C35 6.83697 34.7366 6.20108 34.2678 5.73224C33.7989 5.2634 33.163 5.00001 32.5 5.00001ZM32.5 32.5H25V27.5H28.75C29.0815 27.5 29.3995 27.3683 29.6339 27.1339C29.8683 26.8995 30 26.5815 30 26.25C30 25.9185 29.8683 25.6005 29.6339 25.3661C29.3995 25.1317 29.0815 25 28.75 25H25V21.25H28.75C29.0815 21.25 29.3995 21.1183 29.6339 20.8839C29.8683 20.6495 30 20.3315 30 20C30 19.6685 29.8683 19.3505 29.6339 19.1161C29.3995 18.8817 29.0815 18.75 28.75 18.75H25V15H28.75C29.0815 15 29.3995 14.8683 29.6339 14.6339C29.8683 14.3995 30 14.0815 30 13.75C30 13.4185 29.8683 13.1005 29.6339 12.8661C29.3995 12.6317 29.0815 12.5 28.75 12.5H25V7.50001H32.5V32.5ZM12.1344 4.11563C12.0183 3.99941 11.8804 3.90721 11.7287 3.84431C11.5769 3.7814 11.4143 3.74902 11.25 3.74902C11.0857 3.74902 10.9231 3.7814 10.7713 3.84431C10.6196 3.90721 10.4817 3.99941 10.3656 4.11563L5.36563 9.11563C5.24958 9.2318 5.15756 9.3697 5.09483 9.52144C5.03209 9.67319 4.99987 9.83581 5 10V32.5C5 33.163 5.26339 33.7989 5.73223 34.2678C6.20107 34.7366 6.83696 35 7.5 35H15C15.663 35 16.2989 34.7366 16.7678 34.2678C17.2366 33.7989 17.5 33.163 17.5 32.5V10C17.5001 9.83581 17.4679 9.67319 17.4052 9.52144C17.3424 9.3697 17.2504 9.2318 17.1344 9.11563L12.1344 4.11563ZM7.5 27.5V12.5H10V27.5H7.5ZM12.5 12.5H15V27.5H12.5V12.5ZM11.25 6.76719L14.4828 10H8.01719L11.25 6.76719ZM7.5 32.5V30H15V32.5H7.5Z"
+                            fill="black"></path>
+                    </svg>
+                </div>
+                <div class="flex flex-col flex-1 gap-2">
+                    <h3 class="text-xl leading-7 text-black max-sm:text-lg max-sm:leading-7">
+                        Elegantiškas dizainas
+                    </h3>
+                    <p class="text-lg leading-7 text-black max-sm:text-base max-sm:leading-6">
+                        Lorem ipsum dolor sit amet consectetur. Proin habitant in quis in
+                        iaculis blandit hendrerit.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Feature 2 -->
+            <div class="flex gap-6 items-start">
+                <div>
+                    <svg width="41" height="40" viewBox="0 0 41 40" fill="none" xmlns="http://www.w3.org/2000/svg"
+                        class="feature-icon" style="width: 40px; height: 40px">
+                        <path
+                            d="M33.1666 6.25H8.16663C7.50358 6.25 6.8677 6.51339 6.39886 6.98223C5.93002 7.45107 5.66663 8.08696 5.66663 8.75V17.5C5.66663 25.7375 9.65413 30.7297 12.9994 33.4672C16.6026 36.4141 20.1869 37.4141 20.3432 37.4563C20.558 37.5147 20.7846 37.5147 20.9994 37.4563C21.1557 37.4141 24.7354 36.4141 28.3432 33.4672C31.6791 30.7297 35.6666 25.7375 35.6666 17.5V8.75C35.6666 8.08696 35.4032 7.45107 34.9344 6.98223C34.4656 6.51339 33.8297 6.25 33.1666 6.25ZM33.1666 17.5C33.1666 23.2922 31.0322 27.9938 26.8229 31.4719C24.9905 32.9808 22.9065 34.155 20.6666 34.9406C18.456 34.1687 16.3978 33.0153 14.5854 31.5328C10.326 28.0484 8.16663 23.3281 8.16663 17.5V8.75H33.1666V17.5ZM13.5323 22.1344C13.2977 21.8998 13.1659 21.5817 13.1659 21.25C13.1659 20.9183 13.2977 20.6002 13.5323 20.3656C13.7668 20.1311 14.0849 19.9993 14.4166 19.9993C14.7483 19.9993 15.0665 20.1311 15.301 20.3656L18.1666 23.2328L26.0322 15.3656C26.1484 15.2495 26.2863 15.1574 26.438 15.0945C26.5897 15.0317 26.7524 14.9993 26.9166 14.9993C27.0809 14.9993 27.2435 15.0317 27.3952 15.0945C27.547 15.1574 27.6849 15.2495 27.801 15.3656C27.9171 15.4818 28.0093 15.6196 28.0721 15.7714C28.135 15.9231 28.1673 16.0858 28.1673 16.25C28.1673 16.4142 28.135 16.5769 28.0721 16.7286C28.0093 16.8804 27.9171 17.0182 27.801 17.1344L19.051 25.8844C18.9349 26.0006 18.797 26.0928 18.6453 26.1557C18.4936 26.2186 18.3309 26.251 18.1666 26.251C18.0024 26.251 17.8397 26.2186 17.688 26.1557C17.5362 26.0928 17.3983 26.0006 17.2823 25.8844L13.5323 22.1344Z"
+                            fill="black"></path>
+                    </svg>
+                </div>
+                <div class="flex flex-col flex-1 gap-2">
+                    <h3 class="text-xl leading-7 text-black max-sm:text-lg max-sm:leading-7">
+                        Aukšta kokybė
+                    </h3>
+                    <p class="text-lg leading-7 text-black max-sm:text-base max-sm:leading-6">
+                        Lorem ipsum dolor sit amet consectetur. Proin habitant in quis in
+                        iaculis blandit hendrerit.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Feature 3 -->
+            <article class="flex gap-6 items-start">
+                <div>
+                    <svg width="41" height="40" viewBox="0 0 41 40" fill="none" xmlns="http://www.w3.org/2000/svg"
+                        class="feature-icon" style="width: 40px; height: 40px">
+                        <path
+                            d="M35.2474 6.261C35.2295 5.95519 35.1 5.66659 34.8834 5.44999C34.6668 5.23338 34.3782 5.10386 34.0724 5.086C22.1771 4.38756 12.649 7.96881 8.58646 14.6876C7.17828 16.9859 6.48436 19.6506 6.59271 22.3438C6.68177 24.8313 7.40677 27.3438 8.7474 29.8204L5.69896 32.8672C5.46441 33.1018 5.33264 33.4199 5.33264 33.7516C5.33264 34.0833 5.46441 34.4014 5.69896 34.636C5.93351 34.8705 6.25163 35.0023 6.58334 35.0023C6.91504 35.0023 7.23316 34.8705 7.46771 34.636L10.5146 31.5876C12.9896 32.9266 15.5036 33.6516 17.9896 33.7407C18.1635 33.7469 18.337 33.7501 18.5099 33.7501C21.0282 33.7568 23.4989 33.0633 25.6458 31.7469C32.3646 27.6844 35.9474 18.1579 35.2474 6.261ZM24.3568 29.6094C20.8021 31.7626 16.5943 31.7969 12.3708 29.7297L26.2193 15.8829C26.3354 15.7667 26.4275 15.6289 26.4904 15.4771C26.5532 15.3254 26.5856 15.1627 26.5856 14.9985C26.5856 14.8343 26.5532 14.6716 26.4904 14.5199C26.4275 14.3681 26.3354 14.2303 26.2193 14.1141C26.1031 13.998 25.9653 13.9059 25.8135 13.843C25.6618 13.7802 25.4991 13.7478 25.3349 13.7478C25.1707 13.7478 25.008 13.7802 24.8563 13.843C24.7045 13.9059 24.5667 13.998 24.4505 14.1141L10.6036 27.9688C8.54271 23.7501 8.5724 19.5313 10.724 15.9829C14.1755 10.2844 22.3802 7.16412 32.8036 7.536C33.1771 17.9516 30.0552 26.1579 24.3568 29.6094Z"
+                            fill="black"></path>
+                    </svg>
+                </div>
+                <div class="flex flex-col flex-1 gap-2">
+                    <h3 class="text-xl leading-7 text-black max-sm:text-lg max-sm:leading-7">
+                        Dėmesys ekologijai
+                    </h3>
+                    <p class="text-lg leading-7 text-black max-sm:text-base max-sm:leading-6">
+                        Lorem ipsum dolor sit amet consectetur. Proin habitant in quis in
+                        iaculis blandit hendrerit.
+                    </p>
+                </div>
+            </article>
+
+            <!-- Feature 4 -->
+            <article class="flex gap-6 items-start">
+                <div>
+                    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"
+                        class="feature-icon" style="width: 40px; height: 40px">
+                        <path
+                            d="M32.1344 7.86247C32.2506 7.97857 32.3428 8.11643 32.4057 8.26817C32.4686 8.41992 32.501 8.58258 32.501 8.74685C32.501 8.91112 32.4686 9.07378 32.4057 9.22552C32.3428 9.37727 32.2506 9.51513 32.1344 9.63122L23.3844 18.3812C23.15 18.6158 22.8321 18.7476 22.5006 18.7478C22.169 18.7479 21.851 18.6163 21.6164 18.382C21.3819 18.1477 21.25 17.8297 21.2499 17.4982C21.2497 17.1666 21.3813 16.8486 21.6156 16.614L30.3656 7.86404C30.4816 7.74771 30.6194 7.65539 30.7711 7.59235C30.9228 7.52931 31.0854 7.49679 31.2497 7.49665C31.4139 7.4965 31.5766 7.52874 31.7284 7.59151C31.8802 7.65428 32.0182 7.74636 32.1344 7.86247ZM38.75 9.12654C38.7526 10.1617 38.55 11.1871 38.1538 12.1435C37.7577 13.0999 37.176 13.9682 36.4422 14.6984L28.125 23.0156C27.8938 23.249 27.6185 23.4342 27.3152 23.5603C27.0118 23.6863 26.6863 23.7508 26.3578 23.75H23.75V26.3797C23.7498 26.9247 23.5715 27.4547 23.2422 27.889C23.2077 27.9348 23.1701 27.9781 23.1297 28.0187L21.8797 29.2687C21.4109 29.7372 20.7753 30.0004 20.1125 30.0004C19.4497 30.0004 18.8141 29.7372 18.3453 29.2687L15.4219 26.3437L3.39062 38.3843C3.27449 38.5005 3.13661 38.5926 2.98487 38.6555C2.83313 38.7183 2.67049 38.7507 2.50625 38.7507C2.34201 38.7507 2.17937 38.7183 2.02763 38.6555C1.87589 38.5926 1.73801 38.5005 1.62187 38.3843C1.50574 38.2682 1.41361 38.1303 1.35076 37.9786C1.2879 37.8269 1.25555 37.6642 1.25555 37.5C1.25555 37.3357 1.2879 37.1731 1.35076 37.0214C1.41361 36.8696 1.50574 36.7317 1.62187 36.6156L13.6609 24.5765L10.7391 21.6531C10.5069 21.4209 10.3227 21.1453 10.197 20.842C10.0713 20.5386 10.0066 20.2135 10.0066 19.8851C10.0066 19.5568 10.0713 19.2316 10.197 18.9283C10.3227 18.6249 10.5069 18.3493 10.7391 18.1172L11.9891 16.8672C12.0292 16.8268 12.072 16.7892 12.1172 16.7547C12.5509 16.4292 13.078 16.2522 13.6203 16.25H16.25V13.6406C16.2495 13.3126 16.3138 12.9878 16.4393 12.6848C16.5648 12.3817 16.749 12.1065 16.9812 11.875L25.3 3.55779C26.4019 2.45648 27.8055 1.70651 29.3335 1.40267C30.8615 1.09882 32.4452 1.25473 33.8846 1.85069C35.324 2.44665 36.5545 3.45591 37.4204 4.75094C38.2864 6.04597 38.7491 7.56864 38.75 9.12654ZM36.25 9.12654C36.25 8.06266 35.9345 7.02268 35.3434 6.13808C34.7524 5.25349 33.9124 4.56399 32.9295 4.15677C31.9467 3.74954 30.8651 3.64288 29.8217 3.85026C28.7782 4.05764 27.8196 4.56975 27.0672 5.32185L18.75 13.6406V16.25C18.75 16.913 18.4866 17.5489 18.0178 18.0177C17.5489 18.4866 16.913 18.75 16.25 18.75H13.6375L12.5 19.8859L20.1125 27.5L21.25 26.3625V23.75C21.25 23.0869 21.5134 22.451 21.9822 21.9822C22.4511 21.5134 23.087 21.25 23.75 21.25H26.3578L34.675 12.9312C35.176 12.4327 35.5732 11.8397 35.8436 11.1866C36.1139 10.5336 36.2521 9.83335 36.25 9.12654Z"
+                            fill="black"></path>
+                    </svg>
+                </div>
+                <div class="flex flex-col flex-1 gap-2">
+                    <h3 class="text-xl leading-7 text-black max-sm:text-lg max-sm:leading-7">
+                        Ilgaamžis apdirbimas
+                    </h3>
+                    <p class="text-lg leading-7 text-black max-sm:text-base max-sm:leading-6">
+                        Lorem ipsum dolor sit amet consectetur. Proin habitant in quis in
+                        iaculis blandit hendrerit.
+                    </p>
+                </div>
+            </article>
+
+            <!-- Feature 5 -->
+            <article class="flex gap-6 items-start">
+                <div>
+                    <svg width="41" height="40" viewBox="0 0 41 40" fill="none" xmlns="http://www.w3.org/2000/svg"
+                        class="feature-icon" style="width: 40px; height: 40px">
+                        <path
+                            d="M14.4167 28.125C14.4167 28.4958 14.3067 28.8584 14.1007 29.1667C13.8947 29.475 13.6018 29.7154 13.2592 29.8573C12.9166 29.9992 12.5396 30.0363 12.1759 29.964C11.8122 29.8916 11.4781 29.7131 11.2158 29.4508C10.9536 29.1886 10.775 28.8545 10.7027 28.4908C10.6304 28.1271 10.6675 27.7501 10.8094 27.4075C10.9513 27.0649 11.1916 26.772 11.5 26.566C11.8083 26.36 12.1708 26.25 12.5417 26.25C13.039 26.25 13.5159 26.4475 13.8675 26.7992C14.2191 27.1508 14.4167 27.6277 14.4167 28.125ZM38.1667 24.4047V32.5C38.1667 33.163 37.9033 33.7989 37.4344 34.2678C36.9656 34.7366 36.3297 35 35.6667 35H12.5417C12.1258 35.0003 11.7108 34.9647 11.301 34.8938C9.51359 34.5676 7.92791 33.5472 6.89058 32.0555C5.85324 30.5637 5.44861 28.722 5.76511 26.9328L9.67136 4.56875C9.72688 4.2456 9.84567 3.93659 10.0209 3.65946C10.1961 3.38232 10.4244 3.14251 10.6925 2.95379C10.9606 2.76507 11.2634 2.63114 11.5834 2.55971C11.9034 2.48827 12.2344 2.48073 12.5573 2.5375L21.1104 4.0625C21.7612 4.17979 22.339 4.55014 22.7174 5.09248C23.0957 5.63483 23.2438 6.30499 23.1292 6.95625L21.2417 17.7375L31.837 13.9063C32.4581 13.6819 33.1427 13.7124 33.7414 13.9911C34.34 14.2698 34.8041 14.7741 35.0323 15.3938L38.0104 23.5453C38.1061 23.8221 38.1588 24.1119 38.1667 24.4047ZM16.7604 28.8859L20.6667 6.52188L12.1448 5L8.23855 27.3594C8.03461 28.4967 8.28883 29.6684 8.94573 30.6189C9.60263 31.5695 10.6089 32.2215 11.7448 32.4328C12.3009 32.5325 12.8712 32.5208 13.4227 32.3982C13.9742 32.2756 14.4958 32.0447 14.9573 31.7188C15.4306 31.3896 15.8337 30.9697 16.1432 30.4834C16.4528 29.997 16.6626 29.454 16.7604 28.8859ZM18.9135 30.4688L35.6667 24.3922L32.6854 16.25L20.7448 20.5781L19.2167 29.3156C19.1487 29.708 19.0473 30.0937 18.9135 30.4688ZM35.6667 27.05L20.626 32.5H35.6667V27.05Z"
+                            fill="black"></path>
+                    </svg>
+                </div>
+                <div class="flex flex-col flex-1 gap-2">
+                    <h3 class="text-xl leading-7 text-black max-sm:text-lg max-sm:leading-7">
+                        Plačios interjero galimybės
+                    </h3>
+                    <p class="text-lg leading-7 text-black max-sm:text-base max-sm:leading-6">
+                        Lorem ipsum dolor sit amet consectetur. Proin habitant in quis in
+                        iaculis blandit hendrerit.
+                    </p>
+                </div>
+            </article>
+
+            <!-- Feature 6 -->
+            <article class="flex gap-6 items-start">
+                <div>
+                    <svg width="41" height="40" viewBox="0 0 41 40" fill="none" xmlns="http://www.w3.org/2000/svg"
+                        class="feature-icon" style="width: 40px; height: 40px">
+                        <path
+                            d="M35.624 16.0656C35.0349 15.45 34.4256 14.8156 34.1959 14.2578C33.9834 13.7469 33.9709 12.9 33.9584 12.0797C33.9349 10.5547 33.9099 8.82656 32.7084 7.625C31.5068 6.42344 29.7787 6.39844 28.2537 6.375C27.4334 6.3625 26.5865 6.35 26.0756 6.1375C25.5193 5.90781 24.8834 5.29844 24.2677 4.70937C23.1896 3.67344 21.9646 2.5 20.3334 2.5C18.7021 2.5 17.4787 3.67344 16.399 4.70937C15.7834 5.29844 15.149 5.90781 14.5912 6.1375C14.0834 6.35 13.2334 6.3625 12.4131 6.375C10.8881 6.39844 9.15994 6.42344 7.95837 7.625C6.75681 8.82656 6.73962 10.5547 6.70837 12.0797C6.69587 12.9 6.68337 13.7469 6.47087 14.2578C6.24119 14.8141 5.63181 15.45 5.04275 16.0656C4.00681 17.1438 2.83337 18.3687 2.83337 20C2.83337 21.6313 4.00681 22.8547 5.04275 23.9344C5.63181 24.55 6.24119 25.1844 6.47087 25.7422C6.68337 26.2531 6.69587 27.1 6.70837 27.9203C6.73181 29.4453 6.75681 31.1734 7.95837 32.375C9.15994 33.5766 10.8881 33.6016 12.4131 33.625C13.2334 33.6375 14.0802 33.65 14.5912 33.8625C15.1474 34.0922 15.7834 34.7016 16.399 35.2906C17.4771 36.3266 18.7021 37.5 20.3334 37.5C21.9646 37.5 23.1881 36.3266 24.2677 35.2906C24.8834 34.7016 25.5177 34.0922 26.0756 33.8625C26.5865 33.65 27.4334 33.6375 28.2537 33.625C29.7787 33.6016 31.5068 33.5766 32.7084 32.375C33.9099 31.1734 33.9349 29.4453 33.9584 27.9203C33.9709 27.1 33.9834 26.2531 34.1959 25.7422C34.4256 25.1859 35.0349 24.55 35.624 23.9344C36.6599 22.8562 37.8334 21.6313 37.8334 20C37.8334 18.3687 36.6599 17.1453 35.624 16.0656ZM33.8193 22.2047C33.0709 22.9859 32.2959 23.7938 31.8849 24.7859C31.4912 25.7391 31.474 26.8281 31.4584 27.8828C31.4427 28.9766 31.4256 30.1219 30.9396 30.6063C30.4537 31.0906 29.3162 31.1094 28.2162 31.125C27.1615 31.1406 26.0724 31.1578 25.1193 31.5516C24.1271 31.9625 23.3193 32.7375 22.5381 33.4859C21.7568 34.2344 20.9584 35 20.3334 35C19.7084 35 18.9037 34.2312 18.1287 33.4859C17.3537 32.7406 16.5396 31.9625 15.5474 31.5516C14.5943 31.1578 13.5052 31.1406 12.4506 31.125C11.3568 31.1094 10.2115 31.0922 9.72712 30.6063C9.24275 30.1203 9.224 28.9828 9.20837 27.8828C9.19275 26.8281 9.17556 25.7391 8.78181 24.7859C8.37087 23.7938 7.59587 22.9859 6.84744 22.2047C6.099 21.4234 5.33337 20.625 5.33337 20C5.33337 19.375 6.10212 18.5703 6.84744 17.7953C7.59275 17.0203 8.37087 16.2063 8.78181 15.2141C9.17556 14.2609 9.19275 13.1719 9.20837 12.1172C9.224 11.0234 9.24119 9.87812 9.72712 9.39375C10.2131 8.90937 11.3506 8.89062 12.4506 8.875C13.5052 8.85938 14.5943 8.84219 15.5474 8.44844C16.5396 8.0375 17.3474 7.2625 18.1287 6.51406C18.9099 5.76562 19.7084 5 20.3334 5C20.9584 5 21.7631 5.76875 22.5381 6.51406C23.3131 7.25937 24.1271 8.0375 25.1193 8.44844C26.0724 8.84219 27.1615 8.85938 28.2162 8.875C29.3099 8.89062 30.4552 8.90781 30.9396 9.39375C31.424 9.87969 31.4427 11.0172 31.4584 12.1172C31.474 13.1719 31.4912 14.2609 31.8849 15.2141C32.2959 16.2063 33.0709 17.0141 33.8193 17.7953C34.5677 18.5766 35.3334 19.375 35.3334 20C35.3334 20.625 34.5646 21.4297 33.8193 22.2047ZM27.4678 15.3656C27.584 15.4817 27.6762 15.6196 27.7391 15.7713C27.802 15.9231 27.8344 16.0857 27.8344 16.25C27.8344 16.4143 27.802 16.5769 27.7391 16.7287C27.6762 16.8804 27.584 17.0183 27.4678 17.1344L18.7177 25.8844C18.6017 26.0006 18.4638 26.0928 18.312 26.1557C18.1603 26.2186 17.9976 26.251 17.8334 26.251C17.6691 26.251 17.5064 26.2186 17.3547 26.1557C17.203 26.0928 17.0651 26.0006 16.949 25.8844L13.199 22.1344C12.9644 21.8998 12.8327 21.5817 12.8327 21.25C12.8327 20.9183 12.9644 20.6002 13.199 20.3656C13.4335 20.1311 13.7517 19.9993 14.0834 19.9993C14.4151 19.9993 14.7332 20.1311 14.9677 20.3656L17.8334 23.2328L25.699 15.3656C25.8151 15.2494 25.953 15.1572 26.1047 15.0943C26.2564 15.0314 26.4191 14.999 26.5834 14.999C26.7476 14.999 26.9103 15.0314 27.062 15.0943C27.2138 15.1572 27.3517 15.2494 27.4678 15.3656Z"
+                            fill="black"></path>
+                    </svg>
+                </div>
+                <div class="flex flex-col flex-1 gap-2">
+                    <h3 class="text-xl leading-7 text-black max-sm:text-lg max-sm:leading-7">
+                        Aukšta medžiagų kokybė
+                    </h3>
+                    <p class="text-lg leading-7 text-black max-sm:text-base max-sm:leading-6">
+                        Lorem ipsum dolor sit amet consectetur. Proin habitant in quis in
+                        iaculis blandit hendrerit.
+                    </p>
+                </div>
+            </article>
+        </div>
+    </section>
+
+
+
+    <!-- section - 3  -->
+    <section class="flex sm:flex-row flex-col gap-14 items-center px-4 py-10 sm:p-20 bg-white">
+        <div class="flex flex-col gap-8 text-black w-full sm:w-1/2">
+            <div class="w-full">
+                <h2 class="text-3xl leading-none max-md:max-w-full">
+                    Techniniai duomenys
+                </h2>
+                <p class="mt-4 text-lg leading-7 max-md:max-w-full">
+                    Lorem ipsum dolor sit amet consectetur. Proin habitant in quis in
+                    iaculis blandit hendrerit. Donec diam semper justo nisl mi.
+                    <br />
+                    <br />
+                    Integer sagittis tellus volutpat cras tellus. Tempus bibendum sit
+                    purus ut in diam laoreet scelerisque enim. Diam dictum gravida quis
+                    vestibulum.
+                </p>
+            </div>
+            <button
+                class="hidden sm:block gap-2.5 self-stretch p-4 max-w-full text-lg font-bold leading-none text-center bg-amber-400 rounded-2xl w-[400px]">
+                Gauti pasiūlymą
+            </button>
+        </div>
+
+        <div class="flex flex-col gap-6 items-center w-full sm:w-1/2">
+            <div
+                class="w-full flex flex-col gap-2 sm:gap-6 p-4 sm:py-14 sm:px-10 text-lg text-white bg-black rounded-2xl">
+                <div class="w-full">
+                    <a class="font-bold">Energinio naudingumo klasė:</a>
+                    <a>A</a>
+                </div>
+                <hr class="w-full border border-solid bg-zinc-800 border-zinc-800 min-h-px max-md:max-w-full" />
+
+                <div class="w-full">
+                    <a class="font-bold">Profilio plotis (mm):</a>
+                    <a>68/78/88</a>
+                </div>
+                <hr class="w-full border border-solid bg-zinc-800 border-zinc-800 min-h-px max-md:max-w-full" />
+
+                <div class="w-full">
+                    <a class="font-bold">Apkaustai:</a>
+                    <a>Maco MultiMatic</a>
+                </div>
+                <hr class="w-full border border-solid bg-zinc-800 border-zinc-800 min-h-px max-md:max-w-full" />
+
+                <div class="w-full">
+                    <a class="font-bold">Maksimalus stiklo paketo storis (mm):</a>
+                    <a>32/44/54</a>
+                </div>
+                <hr class="w-full border border-solid bg-zinc-800 border-zinc-800 min-h-px max-md:max-w-full" />
+
+                <div class="w-full">
+                    <a class="font-bold">Spalva:</a>
+                    <a>Galimos visos spalvyno spalvos</a>
+                </div>
+                <hr class="w-full border border-solid bg-zinc-800 border-zinc-800 min-h-px max-md:max-w-full" />
+
+                <div class="w-full">
+                    <a class="font-bold">Garantija:</a>
+                    <a>5 metai</a>
+                </div>
+                <hr class="w-full border border-solid bg-zinc-800 border-zinc-800 min-h-px max-md:max-w-full" />
+
+                <div class="w-full">
+                    <a class="font-bold">Kaina:</a>
+                    <a>Priklauso nuo išmatavimų, medienos, pasirinktų priedų</a>
+                </div>
+            </div>
+            <button
+                class="block sm:hidden gap-2.5 self-stretch p-4 text-lg font-bold leading-none text-center bg-amber-400 rounded-2xl w-full">
+                Gauti pasiūlymą
+            </button>
+        </div>
+    </section>
+
+
+
+    <!-- section - 4  -->
+    <section class="flex flex-col gap-14 px-4 sm:px-20 py-10 sm:py-24 mx-auto max-w-none bg-neutral-100">
+        <div class="flex flex-col gap-6 sm:gap-14">
+            <h2 class="text-3xl leading-10 text-black max-sm:text-3xl max-sm:leading-9">
+                Spalvos
+            </h2>
+            <p class="text-lg leading-7 text-black max-sm:text-base max-sm:leading-6">
+                Lorem ipsum dolor sit amet consectetur. Proin habitant in quis in
+                iaculis blandit hendrerit. Donec diam semper justo nisl mi. Integer
+                sagittis tellus volutpat cras tellus. Tempus bibendum sit purus ut in
+                diam laoreet scelerisque enim. Diam dictum gravida quis vestibulum.
+                Sit sit gravida nisl et pellentesque. Ac donec integer nullam mattis
+                venenatis. Mauris eu aliquam non et a nibh.
+            </p>
+        </div>
+        <div id='pattern-palette' class="flex flex-wrap gap-4 max-md:gap-3 max-sm:gap-2">
+        </div>
+    </section>
+
+
+
+    <!-- section - 5  -->
+    <div
+        class="flex flex-col sm:flex-row gap-6 sm:gap-12 justify-center items-start px-4 py-10 sm:p-20 bg-white w-full">
+        <div class="flex flex-col flex-1 gap-6 items-start">
+            <h2 class="w-full text-3xl leading-10 text-black max-md:text-3xl max-sm:text-2xl">
+                Papildoma informacija
+            </h2>
+
+            <div id="info-container" class="flex flex-col gap-4 items-center justify-around w-full">
+            </div>
+        </div>
+
+        <div
+            class="flex justify-center items-center bg-white rounded-2xl border border-zinc-100 h-[560px] w-[560px] max-md:h-[400px] max-md:w-[400px] max-sm:w-full max-sm:h-[300px]">
+            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/52799e44c1faa06ca5825ea216e2789eab59a919"
+                alt="Product image" class="w-full h-full object-contain rounded-[16px] border-[1px] border-[#F3F4F6]" />
+        </div>
+    </div>
+
+
+
+    <!-- section - 6  -->
+    <section
+        class="flex flex-col gap-6 sm:gap-14 items-center px-4 sm:px-20 py-10 sm:py-24 w-full bg-black max-md:px-10 max-md:py-16 max-sm:px-5 max-sm:py-10">
+        <h2 class="self-stretch text-3xl leading-10 text-white max-sm:text-2xl max-sm:leading-8">
+            Galerija
+        </h2>
+        <div class="flex flex-col gap-6 items-start w-full max-sm:gap-4">
+            <div id='gallery-container' class="flex flex-col sm:flex-row gap-4 sm:gap-6 w-full items-center justify-center">
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- section - 7  -->
+    <section
+        class="flex flex-col gap-6 sm:gap-14 px-4 py-10 sm:p-20 mx-auto max-w-none bg-neutral-100 max-md:p-10 max-md:max-w-[991px] max-sm:p-5 max-sm:max-w-screen-sm">
+        <!-- Header with title and navigation arrows -->
+        <header class="flex flex-row justify-between items-center">
+            <h2 class="text-3xl leading-10 text-black">Panašūs gaminiai</h2>
+            <div class="flex gap-6 max-sm:self-end">
+                <button class="flex justify-center items-center w-12 h-12 bg-amber-400 rounded-2xl cursor-pointer"
+                    aria-label="Previous product">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                        class="arrow-icon">
+                        <path
+                            d="M21 11.9999C21 12.1988 20.921 12.3896 20.7803 12.5303C20.6397 12.6709 20.4489 12.7499 20.25 12.7499H5.56029L11.0306 18.2193C11.1003 18.289 11.1556 18.3717 11.1933 18.4628C11.231 18.5538 11.2504 18.6514 11.2504 18.7499C11.2504 18.8485 11.231 18.9461 11.1933 19.0371C11.1556 19.1281 11.1003 19.2109 11.0306 19.2806C10.9609 19.3502 10.8782 19.4055 10.7872 19.4432C10.6961 19.4809 10.5985 19.5003 10.5 19.5003C10.4014 19.5003 10.3039 19.4809 10.2128 19.4432C10.1218 19.4055 10.039 19.3502 9.96935 19.2806L3.21935 12.5306C3.14962 12.4609 3.0943 12.3782 3.05656 12.2871C3.01882 12.1961 2.99939 12.0985 2.99939 11.9999C2.99939 11.9014 3.01882 11.8038 3.05656 11.7127C3.0943 11.6217 3.14962 11.539 3.21935 11.4693L9.96935 4.7193C10.1101 4.57857 10.301 4.49951 10.5 4.49951C10.699 4.49951 10.8899 4.57857 11.0306 4.7193C11.1713 4.86003 11.2504 5.05091 11.2504 5.24993C11.2504 5.44895 11.1713 5.63982 11.0306 5.78055L5.56029 11.2499H20.25C20.4489 11.2499 20.6397 11.3289 20.7803 11.4696C20.921 11.6103 21 11.801 21 11.9999Z"
+                            fill="black"></path>
+                    </svg>
+                </button>
+                <button class="flex justify-center items-center w-12 h-12 bg-amber-400 rounded-2xl cursor-pointer"
+                    aria-label="Next product">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                        class="arrow-icon">
+                        <path
+                            d="M20.7806 12.5306L14.0306 19.2806C13.8899 19.4213 13.699 19.5003 13.5 19.5003C13.301 19.5003 13.1101 19.4213 12.9694 19.2806C12.8286 19.1398 12.7496 18.949 12.7496 18.7499C12.7496 18.5509 12.8286 18.36 12.9694 18.2193L18.4397 12.7499H3.75C3.55109 12.7499 3.36032 12.6709 3.21967 12.5303C3.07902 12.3896 3 12.1988 3 11.9999C3 11.801 3.07902 11.6103 3.21967 11.4696C3.36032 11.3289 3.55109 11.2499 3.75 11.2499H18.4397L12.9694 5.78055C12.8286 5.63982 12.7496 5.44895 12.7496 5.24993C12.7496 5.05091 12.8286 4.86003 12.9694 4.7193C13.1101 4.57857 13.301 4.49951 13.5 4.49951C13.699 4.49951 13.8899 4.57857 14.0306 4.7193L20.7806 11.4693C20.8504 11.539 20.9057 11.6217 20.9434 11.7127C20.9812 11.8038 21.0006 11.9014 21.0006 11.9999C21.0006 12.0985 20.9812 12.1961 20.9434 12.2871C20.9057 12.3782 20.8504 12.4609 20.7806 12.5306Z"
+                            fill="black"></path>
+                    </svg>
+                </button>
+            </div>
+        </header>
+
+        <!-- Product cards section -->
+        <div id="product-container"
+            class="flex flex-row sm:items-center sm:justify-center flex-nowrap gap-2 sm:gap-6 overflow-x-scroll sm:overflow-x-auto">
+        </div>
+
+        <!-- Contact/Consultation section -->
+        <section class="flex overflow-hidden relative flex-col gap-6 p-12 rounded-2xl bg-neutral-900 max-sm:p-6">
+            <div class="flex gap-4 justify-between items-start max-sm:flex-col max-sm:items-center max-sm:text-center">
+                <div class="flex-1">
+                    <h2 class="mb-4 text-2xl leading-8 text-white">
+                        <span>Reikia konsultacijos ar patarimo?</span>
+                        <br />
+                        <span>Klauskite!</span>
+                    </h2>
+                    <p class="text-base leading-6 text-white">
+                        Jūsų grįžtamasis ryšys leidžia mums augti ir gerinti jūsų patirtį.
+                    </p>
+                </div>
+                <div class="hidden sm:block">
+                    <svg width="180" height="72" viewBox="0 0 180 72" fill="none" xmlns="http://www.w3.org/2000/svg"
+                        class="logo">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M40.6837 19.5748L32.2582 24.6937C31.2911 25.2805 30.0182 24.9722 29.429 24.0026L24.6407 16.1216C24.0515 15.1544 24.3622 13.8815 25.3318 13.2923L33.7573 8.17339C34.7244 7.58417 35.9973 7.89494 36.5865 8.86453L41.3748 16.7456C41.9616 17.7127 41.6533 18.9856 40.6837 19.5748Z"
+                            fill="#FFCC32"></path>
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M55.5308 26.1184L49.4447 29.8153C48.7461 30.2404 47.8262 30.0167 47.4011 29.3156L43.9429 23.6223C43.5178 22.9237 43.7415 22.0039 44.4426 21.5787L50.5287 17.8819C51.2273 17.4567 52.1471 17.6805 52.5723 18.3816L56.0305 24.0748C56.4556 24.7734 56.2318 25.6933 55.5308 26.1184Z"
+                            fill="#FFCC32"></path>
+                        <mask id="mask0_2501_1817" style="mask-type: luminance" maskUnits="userSpaceOnUse" x="43" y="17"
+                            width="14" height="14">
+                            <path
+                                d="M55.5308 26.1184L49.4447 29.8153C48.7461 30.2404 47.8262 30.0167 47.4011 29.3156L43.9429 23.6223C43.5178 22.9237 43.7415 22.0039 44.4426 21.5787L50.5287 17.8819C51.2273 17.4567 52.1471 17.6805 52.5723 18.3816L56.0305 24.0748C56.4556 24.7734 56.2318 25.6933 55.5308 26.1184Z"
+                                fill="white"></path>
+                        </mask>
+                        <g mask="url(#mask0_2501_1817)">
+                            <path d="M56.4534 17.459H43.5181V30.2402H56.4534V17.459Z" fill="#FFCC32"></path>
+                        </g>
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M55.5998 41.2415L50.727 44.2024C50.1676 44.543 49.4317 44.364 49.0911 43.8022L46.3215 39.2426C45.9809 38.6832 46.1599 37.9473 46.7218 37.6067L51.5946 34.6457C52.154 34.3051 52.8899 34.4841 53.2305 35.046L56 39.6056C56.3406 40.165 56.1592 40.9009 55.5998 41.2415Z"
+                            fill="#FFCC32"></path>
+                        <mask id="mask1_2501_1817" style="mask-type: luminance" maskUnits="userSpaceOnUse" x="46" y="34"
+                            width="11" height="11">
+                            <path
+                                d="M55.5998 41.2415L50.727 44.2024C50.1676 44.543 49.4317 44.364 49.0911 43.8022L46.3215 39.2426C45.9809 38.6832 46.1599 37.9473 46.7218 37.6067L51.5946 34.6457C52.154 34.3051 52.8899 34.4841 53.2305 35.046L56 39.6056C56.3406 40.165 56.1592 40.9009 55.5998 41.2415Z"
+                                fill="white"></path>
+                        </mask>
+                        <g mask="url(#mask1_2501_1817)">
+                            <path d="M56.3386 34.3052H45.9789V44.5431H56.3386V34.3052Z" fill="#FFCC32"></path>
+                        </g>
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M50.173 51.37L47.4904 53.0009C47.1822 53.1873 46.7769 53.0904 46.5905 52.7821L45.0665 50.2736C44.88 49.9653 44.9794 49.5601 45.2852 49.3736L47.9678 47.7427C48.2761 47.5562 48.6813 47.6532 48.8678 47.9615L50.3918 50.47C50.5782 50.7783 50.4788 51.1835 50.173 51.37Z"
+                            fill="#FFCC32"></path>
+                        <mask id="mask2_2501_1817" style="mask-type: luminance" maskUnits="userSpaceOnUse" x="44" y="47"
+                            width="7" height="7">
+                            <path
+                                d="M50.173 51.37L47.4904 53.0009C47.1822 53.1873 46.7769 53.0904 46.5905 52.7821L45.0665 50.2736C44.88 49.9653 44.9794 49.5601 45.2852 49.3736L47.9678 47.7427C48.2761 47.5562 48.6813 47.6532 48.8678 47.9615L50.3918 50.47C50.5782 50.7783 50.4788 51.1835 50.173 51.37Z"
+                                fill="white"></path>
+                        </mask>
+                        <g mask="url(#mask2_2501_1817)">
+                            <path d="M50.5807 47.5542H44.8776V53.1878H50.5807V47.5542Z" fill="#FFCC32"></path>
+                        </g>
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M20.1432 50.8826L28.6781 45.9526C29.6576 45.3858 30.9231 45.7239 31.4899 46.7059L36.1042 54.6914C36.671 55.6709 36.3329 56.9364 35.3509 57.5032L26.816 62.4332C25.8364 63 24.571 62.6619 24.0042 61.6799L19.3899 53.6945C18.8231 52.7149 19.1612 51.4495 20.1432 50.8826Z"
+                            fill="#FFCC32"></path>
+                        <mask id="mask3_2501_1817" style="mask-type: luminance" maskUnits="userSpaceOnUse" x="19" y="45"
+                            width="18" height="18">
+                            <path
+                                d="M20.1432 50.8826L28.6781 45.9526C29.6576 45.3858 30.9231 45.7239 31.4899 46.7059L36.1042 54.6914C36.671 55.6709 36.3329 56.9364 35.3509 57.5032L26.816 62.4332C25.8364 63 24.571 62.6619 24.0042 61.6799L19.3899 53.6945C18.8231 52.7149 19.1612 51.4495 20.1432 50.8826Z"
+                                fill="white"></path>
+                        </mask>
+                        <g mask="url(#mask3_2501_1817)">
+                            <path d="M36.6731 45.3862H18.8252V63.0005H36.6731V45.3862Z" fill="#FFCC32"></path>
+                        </g>
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M5.45234 44.0851L11.613 40.5399C12.3215 40.1322 13.2339 40.3758 13.6417 41.0819L16.9706 46.8199C17.3783 47.5235 17.1347 48.4334 16.4261 48.8411L10.2655 52.3839C9.55695 52.7916 8.64454 52.5479 8.23681 51.8419L4.90788 46.1039C4.50015 45.3978 4.74379 44.4904 5.45234 44.0827"
+                            fill="#FFCC32"></path>
+                        <mask id="mask4_2501_1817" style="mask-type: luminance" maskUnits="userSpaceOnUse" x="4" y="40"
+                            width="14" height="13">
+                            <path
+                                d="M5.45222 44.0847L11.6129 40.5394C12.3214 40.1317 13.2338 40.3754 13.6415 41.0814L16.9705 46.8194C17.3782 47.523 17.1346 48.4329 16.426 48.8406L10.2654 52.3834C9.55682 52.7911 8.64441 52.5475 8.23669 51.8414L4.90776 46.1034C4.50003 45.3973 4.74367 44.4899 5.45222 44.0822"
+                                fill="white"></path>
+                        </mask>
+                        <g mask="url(#mask4_2501_1817)">
+                            <path d="M17.3806 40.1343H4.5V52.7912H17.3806V40.1343Z" fill="#FFCC32"></path>
+                        </g>
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M5.72608 28.9425L10.6611 26.1307C11.2279 25.8075 11.9588 26.0014 12.287 26.5583L14.9546 31.1104C15.2803 31.6698 15.0864 32.3908 14.5195 32.714L9.58456 35.5233C9.01772 35.8465 8.2868 35.6526 7.95863 35.0932L5.29101 30.5436C4.96284 29.9842 5.15924 29.2632 5.72608 28.94"
+                            fill="#FFCC32"></path>
+                        <mask id="mask5_2501_1817" style="mask-type: luminance" maskUnits="userSpaceOnUse" x="5" y="25"
+                            width="11" height="11">
+                            <path
+                                d="M5.72608 28.9425L10.6611 26.1307C11.2279 25.8075 11.9588 26.0014 12.287 26.5583L14.9546 31.1104C15.2803 31.6698 15.0864 32.3908 14.5195 32.714L9.58456 35.5233C9.01772 35.8465 8.2868 35.6526 7.95863 35.0932L5.29101 30.5436C4.96284 29.9842 5.15924 29.2632 5.72608 28.94"
+                                fill="white"></path>
+                        </mask>
+                        <g mask="url(#mask5_2501_1817)">
+                            <path d="M15.28 25.8076H4.96008V35.8466H15.28V25.8076Z" fill="#FFCC32"></path>
+                        </g>
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M11.6873 19.0897L14.0069 17.7696C14.2729 17.6179 14.616 17.7074 14.7701 17.9709L16.0231 20.109C16.1773 20.3701 16.0853 20.7107 15.8193 20.8623L13.4997 22.1824C13.2337 22.3341 12.8881 22.2446 12.7365 21.9811L11.4835 19.843C11.3293 19.5795 11.4213 19.2414 11.6873 19.0897Z"
+                            fill="#FFCC32"></path>
+                        <mask id="mask6_2501_1817" style="mask-type: luminance" maskUnits="userSpaceOnUse" x="11" y="17"
+                            width="6" height="6">
+                            <path
+                                d="M11.6872 19.0892L14.0068 17.7691C14.2728 17.6174 14.6159 17.7069 14.77 17.9705L16.023 20.1085C16.1772 20.3696 16.0852 20.7102 15.8192 20.8618L13.4996 22.182C13.2336 22.3336 12.888 22.2441 12.7364 21.9806L11.4834 19.8425C11.3292 19.579 11.4212 19.2409 11.6872 19.0892Z"
+                                fill="white"></path>
+                        </mask>
+                        <g mask="url(#mask6_2501_1817)">
+                            <path d="M16.1775 17.6177H11.3296V22.3339H16.1775V17.6177Z" fill="#FFCC32"></path>
+                        </g>
+                        <path
+                            d="M122.375 35.9138H114.054L111.305 31.8192H120.339V30.1634H114.181C113.619 30.1634 113.135 29.9595 112.729 29.5518C112.322 29.1466 112.118 28.6593 112.118 28.1049V21.1288H116.24V26.0663H120.339V20.3133H112.118V18.2548C112.118 17.7128 112.322 17.2355 112.729 16.8303C113.132 16.4225 113.619 16.2187 114.181 16.2187H124.434V33.8478C124.434 34.4072 124.23 34.8945 123.822 35.2997C123.42 35.7075 122.932 35.9113 122.375 35.9113M98.1531 30.1634V21.1313H102.275V30.1634H98.1531ZM106.37 30.1634V20.3133H98.1531V16.2187H108.406C108.963 16.2187 109.45 16.4126 109.853 16.8029C110.261 17.1932 110.464 17.6756 110.464 18.2548V30.1609H106.37V30.1634ZM86.2669 30.1634C85.7075 30.1634 85.2252 29.9595 84.8175 29.5518C84.4073 29.1466 84.2059 28.6593 84.2059 28.0974V23.1923C84.2059 22.6329 84.4098 22.1456 84.8175 21.7429C85.2277 21.3351 85.7075 21.1288 86.2694 21.1288H88.8674L91.6171 25.2235H88.3329V26.0663H92.4275V21.1288H96.5222V30.1609H86.2694L86.2669 30.1634ZM84.2059 20.3133L86.9556 16.2187H94.4587C95.038 16.2187 95.5277 16.4176 95.9206 16.8154C96.3208 17.2107 96.5197 17.693 96.5197 18.2548V20.3133H84.2034H84.2059ZM70.2363 30.1634V13.7524H74.331V30.1634H70.2363ZM138.379 28.9253H138.399V30.7054H140.139V33.4575H135.649V30.1659H128.126C127.572 30.1659 127.084 29.962 126.681 29.5543C126.274 29.1515 126.07 28.6643 126.07 28.1024V16.2237H130.192V26.0712H134.287V16.2212H138.381V28.9278L138.379 28.9253ZM80.6209 30.1634H75.1489V26.0687H83.3706L80.6209 30.1634Z"
+                            fill="white"></path>
+                        <path
+                            d="M172.735 56.8319H164.389L161.644 52.7372H168.665L163.372 47.7998H169.274C170.599 48.9384 171.924 50.0671 173.244 51.1884C174.263 52.2052 174.771 52.9958 174.771 53.5502V54.7758C174.771 55.2855 174.554 55.7529 174.124 56.188C173.692 56.6181 173.224 56.8344 172.735 56.8344M162.454 46.9818V44.9233C162.454 44.3813 162.658 43.9015 163.066 43.4988C163.469 43.091 163.956 42.8872 164.518 42.8872H172.021L174.771 46.9818H162.454ZM157.952 56.8319H149.755C149.201 56.8319 148.714 56.628 148.311 56.2203C147.903 55.8175 147.697 55.3303 147.697 54.7734V47.7973H151.819V52.7347H155.913V47.7973H160.008V54.7734C160.008 55.3303 159.804 55.8175 159.396 56.2203C158.991 56.628 158.506 56.8319 157.949 56.8319H157.952ZM147.697 46.9818V44.9233C147.697 44.3813 147.901 43.9015 148.311 43.4988C148.714 43.091 149.201 42.8872 149.755 42.8872H157.952C158.524 42.8872 159.016 43.0861 159.411 43.4863C159.812 43.8816 160.01 44.3639 160.01 44.9233V46.9818H147.699H147.697ZM130.47 56.8319V47.7998H134.592V56.8319H130.47ZM136.221 56.8319V47.7998H140.315V56.8319H136.221ZM141.969 56.8319V46.9818H130.47V42.8872H144.03C144.589 42.8872 145.071 43.0861 145.467 43.4863C145.867 43.8816 146.066 44.3639 146.066 44.9233V56.8294H141.971L141.969 56.8319ZM126.092 56.8319H117.751C117.192 56.8319 116.705 56.628 116.299 56.2203C115.892 55.8175 115.688 55.3302 115.688 54.7684V44.9233C115.688 44.3813 115.892 43.9015 116.299 43.4988C116.705 43.091 117.189 42.8872 117.751 42.8872H125.968C126.527 42.8872 127.007 43.0861 127.405 43.4863C127.805 43.8816 128.004 44.3639 128.004 44.9233V46.9818H119.81V52.7372H128.842L126.092 56.8319ZM125.968 51.8944H123.37L120.62 47.7998H127.999V49.8608C127.999 50.4201 127.803 50.9025 127.405 51.2977C127.005 51.698 126.527 51.8969 125.968 51.8969V51.8944ZM106.653 56.8319V46.9818H105V42.8872H106.653V37.9497L110.748 40.6994V56.8319H106.653ZM111.566 46.9818V42.8872H112.1L114.85 46.9818H111.566ZM101.589 56.8319H93.2429L90.4982 52.7372H97.5191L92.2261 47.7998H98.1282C99.4533 48.9384 100.778 50.0671 102.099 51.1884C103.118 52.2052 103.625 52.9958 103.625 53.5502V54.7758C103.625 55.2855 103.409 55.7529 102.979 56.188C102.546 56.6181 102.079 56.8344 101.589 56.8344V56.8319ZM91.3087 46.9818V44.9233C91.3087 44.3813 91.5126 43.9015 91.9203 43.4988C92.3231 43.091 92.8103 42.8872 93.3722 42.8872H100.875L103.625 46.9818H91.3087ZM84.3326 41.2339V37.9522H88.4546V41.2339H84.3326ZM84.3326 56.8319V42.8896H88.4546V56.8319H84.3326ZM80.5164 56.8319H72.1705L69.4258 52.7372H76.4466L71.1536 47.7998H77.0557C78.3808 48.9384 79.7059 50.0671 81.0261 51.1884C82.0454 52.2052 82.5526 52.9958 82.5526 53.5502V54.7758C82.5526 55.2855 82.3363 55.7529 81.9062 56.188C81.4736 56.6181 81.0062 56.8344 80.5164 56.8344V56.8319ZM70.2388 46.9818V44.9233C70.2388 44.3813 70.4426 43.9015 70.8503 43.4988C71.2531 43.091 71.7404 42.8872 72.3022 42.8872H79.8054L82.555 46.9818H70.2388Z"
+                            fill="white"></path>
+                    </svg>
+                </div>
+            </div>
+            <button
+                class="p-4 text-lg font-bold leading-7 text-center bg-amber-400 rounded-2xl cursor-pointer w-[260px] max-sm:w-full">
+                Susisiekti
+            </button>
+
+            <!-- Decorative SVG elements -->
+            <div class="absolute right-[-59px] top-[-124px]">
+                <svg width="304" height="233" viewBox="0 0 304 233" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M344.506 118.24L344.507 118.24C366.08 105.19 372.944 77.0023 359.882 55.57L359.881 55.568L261.516 -105.589L261.516 -105.589C248.406 -127.064 220.109 -133.939 198.594 -120.891L25.5163 -16.2176L25.516 -16.2174C3.94915 -3.17132 -2.97831 25.0153 10.1432 46.4562C10.1436 46.4569 10.144 46.4576 10.1444 46.4582L108.506 207.611L108.506 207.612C121.62 229.093 149.917 235.905 171.423 222.917L171.424 222.916L344.506 118.24Z"
+                        stroke="#FFCC32" stroke-width="7"></path>
+                </svg>
+            </div>
+            <div class="absolute right-[165px] bottom-[-288px]">
+                <svg width="370" height="69" viewBox="0 0 370 69" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M344.506 249.24L344.507 249.24C366.08 236.19 372.944 208.002 359.882 186.57L359.881 186.568L261.516 25.4112L261.516 25.4109C248.406 3.93607 220.109 -2.93903 198.594 10.109L25.5163 114.782L25.516 114.783C3.94915 127.829 -2.97831 156.015 10.1432 177.456C10.1436 177.457 10.144 177.458 10.1444 177.458L108.506 338.611L108.506 338.612C121.62 360.093 149.917 366.905 171.423 353.917L171.424 353.916L344.506 249.24Z"
+                        stroke="#FFCC32" stroke-width="7"></path>
+                </svg>
+            </div>
+        </section>
+    </section>
+
+
+    <script src="./script.js" defer> </script>
+</body>
+
+</html>
