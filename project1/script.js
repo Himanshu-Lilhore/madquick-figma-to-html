@@ -118,8 +118,9 @@ function fillInfoSection() {
         heading.className = "text-lg font-bold text-black";
         heading.innerHTML = info.title;
         const toggleButton = document.createElement("div");
-        toggleButton.className = "toggle-button flex justify-center items-center p-2 w-8 bg-amber-400 rounded-2xl"
-        toggleButton.setAttribute("aria-expanded", "false");
+        toggleButton.className = "toggle-button flex justify-center items-center p-2 w-8 bg-amber-400 rounded-2xl" + (index === 0 ? " active" : "");
+        if (index === 0) toggleButton.setAttribute("aria-expanded", "true");
+        else toggleButton.setAttribute("aria-expanded", "false");
         toggleButton.setAttribute("aria-controls", `info-${index}-content`);
         toggleButton.addEventListener("click", () => {
             toggleSection(toggleButton, `info-${index}-content`);
@@ -144,7 +145,7 @@ function fillInfoSection() {
         headingContainer.appendChild(toggleButton);
         infoMain.appendChild(headingContainer);
         const content = document.createElement("div");
-        content.className = "section-content w-full";
+        content.className = "section-content w-full" + (index === 0 ? " active" : "");
         content.innerHTML = info.content;
         content.setAttribute("id", `info-${index}-content`);
         infoMain.appendChild(content);
@@ -168,14 +169,19 @@ function generateGallery() {
     const galleryContainer = document.getElementById("gallery-container");
     const centerImg = document.createElement("img");
     const centerImgContainer = document.createElement("div");
-    centerImgContainer.className = 'w-full sm:max-w-1/2 object-cover rounded-2xl'
+    centerImgContainer.className = //'min-w-[343px] sm:min-w-[625px]' + 
+    // ' min-h-[343px] sm:min-h-[560px] ' + 
+    ' object-cover rounded-2xl'
     centerImg.src = galleryImgs[0];
-    centerImg.className = "object-cover rounded-2xl";
-    galleryContainer.appendChild(centerImg);
+    centerImg.className = "object-cover rounded-2xl min-w-[343px] sm:min-h-[606px]";
+    centerImgContainer.appendChild(centerImg);
+    galleryContainer.appendChild(centerImgContainer);
 
     function getImageElement(src) {
         const imgContainer = document.createElement("div");
-        imgContainer.className = 'object-cover w-full rounded-2xl flex-[1_0_0]'
+        imgContainer.className = //'min-w-[163px] sm:min-w-[303px]' + 
+        // ' min-h-[163px] sm:min-h-[268px] ' + 
+        ' rounded-2xl'
         const img = document.createElement("img");
         img.className = 'object-cover w-full h-full rounded-2xl'
         img.src = src;
@@ -184,13 +190,13 @@ function generateGallery() {
     }
 
     const secondaryImgsContainer1 = document.createElement("div");
-    secondaryImgsContainer1.setAttribute('class', "flex flex-row sm:flex-col w-full sm:w-fit gap-4 sm:gap-6")
+    secondaryImgsContainer1.setAttribute('class', "flex flex-row sm:flex-col w-full sm:w-1/4 gap-4 sm:gap-6")
     secondaryImgsContainer1.appendChild(getImageElement(galleryImgs[1]));
     secondaryImgsContainer1.appendChild(getImageElement(galleryImgs[2]));
     galleryContainer.appendChild(secondaryImgsContainer1);
 
     const secondaryImgsContainer2 = document.createElement("div");
-    secondaryImgsContainer2.setAttribute('class', "flex flex-row sm:flex-col w-full sm:w-fit gap-4 sm:gap-6")
+    secondaryImgsContainer2.setAttribute('class', "flex flex-row sm:flex-col w-full sm:w-1/4 gap-4 sm:gap-6")
     secondaryImgsContainer2.appendChild(getImageElement(galleryImgs[3]));
     secondaryImgsContainer2.appendChild(getImageElement(galleryImgs[4]));
     galleryContainer.appendChild(secondaryImgsContainer2);
@@ -230,7 +236,7 @@ const productContainer = document.getElementById("product-container");
 
 productInfos.forEach((productInfo) => {
     const productImageContainer = document.createElement("div");
-    productImageContainer.className = "flex relative flex-col gap-2 sm:gap-4 items-center min-w-[167px] sm:min-w-[302px]";
+    productImageContainer.className = "flex relative flex-col gap-2 sm:gap-4 items-center min-w-[180px] sm:min-w-[302px]";
 
     const img = document.createElement("img");
     img.src = productInfo.image;

@@ -439,14 +439,11 @@
 
 
     <!-- section - 6  -->
-    <section
-        class="flex flex-col gap-6 sm:gap-14 items-center px-4 sm:px-20 py-10 sm:py-24 w-full bg-black max-md:px-10 max-md:py-16 max-sm:px-5 max-sm:py-10">
+    <section class="flex flex-col gap-6 sm:gap-14 items-center px-4 sm:px-20 py-10 sm:py-24 w-full bg-black">
         <h2 class="self-stretch text-3xl leading-10 text-white max-sm:text-2xl max-sm:leading-8">
             Galerija
         </h2>
-        <div class="flex flex-col gap-6 items-start w-full max-sm:gap-4">
-            <div id='gallery-container' class="flex flex-col sm:flex-row gap-4 sm:gap-6 w-full items-center justify-center">
-            </div>
+        <div id='gallery-container' class="flex flex-col sm:flex-row gap-4 sm:gap-6 w-full items-center justify-center">
         </div>
     </section>
 
@@ -454,11 +451,11 @@
 
     <!-- section - 7  -->
     <section
-        class="flex flex-col gap-6 sm:gap-14 px-4 py-10 sm:p-20 mx-auto max-w-none bg-neutral-100 max-md:p-10 max-md:max-w-[991px] max-sm:p-5 max-sm:max-w-screen-sm">
-        <!-- Header with title and navigation arrows -->
-        <header class="flex flex-row justify-between items-center">
+        class="flex flex-col gap-6 sm:gap-14 px-4 py-10 sm:p-20 mx-auto max-w-none bg-neutral-100">
+        <!-- title and navigation arrows -->
+        <div class="flex flex-row justify-between items-center">
             <h2 class="text-3xl leading-10 text-black">Panašūs gaminiai</h2>
-            <div class="flex gap-6 max-sm:self-end">
+            <div class="flex gap-2 sm:gap-6 max-sm:self-end">
                 <button class="flex justify-center items-center w-12 h-12 bg-amber-400 rounded-2xl cursor-pointer"
                     aria-label="Previous product">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
@@ -478,7 +475,7 @@
                     </svg>
                 </button>
             </div>
-        </header>
+        </div>
 
         <!-- Product cards section -->
         <div id="product-container"
@@ -486,7 +483,7 @@
         </div>
 
         <!-- Contact/Consultation section -->
-        <section class="flex overflow-hidden relative flex-col gap-6 p-12 rounded-2xl bg-neutral-900 max-sm:p-6">
+        <div class="flex overflow-hidden relative flex-col gap-6 p-12 rounded-2xl bg-neutral-900 max-sm:p-6">
             <div class="flex gap-4 justify-between items-start max-sm:flex-col max-sm:items-center max-sm:text-center">
                 <div class="flex-1">
                     <h2 class="mb-4 text-2xl leading-8 text-white">
@@ -617,7 +614,7 @@
                         stroke="#FFCC32" stroke-width="7"></path>
                 </svg>
             </div>
-        </section>
+        </div>
     </section>
 
 
